@@ -1,25 +1,24 @@
-const express = require('express')
-const path = require('path')
+//const express = require('express')
+import express from 'express'
+//const path = require('path')
+import path from 'path'
 
-const startServer = (options) =>{
-    const {port , public_path = 'public'} = options
+export const startServer = (options) => {
+    const { port, public_path = 'public' } = options
     const app = express()
 
     //para usar middlewares se coloca use
 
     app.use(express.static(public_path))
 
-    app.get('*'),(req,res)=>{
-        const indexPath= path.join(__dirname +`../../../${public_path}/index.html`)
+    app.get('*'), (req, res) => {
+        const indexPath = path.join(__dirname + `../../../${public_path}/index.html`)
 
         res.sendFile(indexPath)
     }
 
-    app.listen(port, ()=>{
+    app.listen(port, () => {
         console.log(`Escuchando en el puerto ${port}`)
     })
 }
 
-module.exports={
-    startServer
-}

@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Proyecto de web server practica",
   "main": "src/app.js",
+  "type":"module",
+
   "scripts": {
     "dev": "nodemon src/app.js"
   },
